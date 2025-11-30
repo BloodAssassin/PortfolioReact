@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: center;
     font-weight: bold;
-    
+
     * {
       z-index: 2;
     }
@@ -25,9 +25,9 @@
 
   .bannerPortraitWrapper {
     position: absolute;
+    top: 0;
     right: 0;
-    top: 35px;
-    height: calc(100% - 35px);
+    height: calc(100%);
     z-index: 0;
 
     &::before {
@@ -43,6 +43,7 @@
 
     .bannerPortrait {
       position: relative;
+      top: 35px;
       height: 100%;
       z-index: 1;
     }

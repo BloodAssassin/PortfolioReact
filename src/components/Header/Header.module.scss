@@ -6,6 +6,7 @@
   top: 0;
   width: 100%;
   z-index: 10;
+  color: $background-color;
 
   &::before {
     content: "";
@@ -16,9 +17,23 @@
     bottom: -10px;
     background-color: $primary-color;
     transform: rotate(-0.5deg);
-    // filter: drop-shadow(2px 1px 10px rgba(0, 0, 0, 0.1));
     z-index: -1;
     animation: wobble 6s ease-in-out infinite;
+    transition: filter 0.3s ease, background-color 0.3s ease, backdrop-filter 0.3s ease;
+    filter: drop-shadow(2px 1px 10px rgba(0, 0, 0, 0.15));
+  }
+
+  &.withBlur {
+    &::before {
+      background-color: rgba($primary-color, 0.8);
+      backdrop-filter: blur(10px);
+    }
+  }
+
+  &.atTop {
+    &::before {
+      filter: drop-shadow(2px 1px 10px rgba(0, 0, 0, 0));
+    }
   }
 
   a {
