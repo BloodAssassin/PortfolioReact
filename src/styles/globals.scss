@@ -8,6 +8,10 @@ body {
   overflow-y: scroll;
 }
 
+section {
+  padding: 40px 0;
+}
+
 .content {
   max-width: $content-width;
   margin: 0 auto;

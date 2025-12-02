@@ -1,10 +1,12 @@
 import styles from "./Home.module.scss";
-import bannerImage from "../../assets/portrait_blurred.png";
+import bannerImage from "../../assets/portrait_contrast.png";
 import reactLogo from "../../assets/react.svg";
 import dotnetLogo from "../../assets/dotnet.svg";
 import phpLogo from "../../assets/php.svg";
 import drupalLogo from "../../assets/drupal.svg";
 import { useParallax } from "../../hooks/useParallax";
+import TechCard from "../../components/TechCard/TechCard";
+import { TechCardColor } from "../../components/TechCard/types";
 
 const Home = () => {
   const bannerBackgroundRef = useParallax(0.2);
@@ -38,16 +40,47 @@ const Home = () => {
         </div>
       </div>
       <div className={`content ${styles.content}`}>
-        <h2>Something About Me</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat odio
-          architecto eum similique temporibus aut id nulla! Architecto dolores
-          iusto nesciunt ipsa, nobis excepturi laboriosam odio est. Illum, vitae
-          dolor. Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-          Fugiat nostrum, obcaecati quidem ullam provident dolorum ipsa
-          corporis, earum consectetur praesentium veniam dolores ratione, sequi
-          reprehenderit quos error molestiae aperiam accusantium?
-        </p>
+        <section>
+          <h2>Something About Me</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat odio
+            architecto eum similique temporibus aut id nulla! Architecto dolores
+            iusto nesciunt ipsa, nobis excepturi laboriosam odio est. Illum,
+            vitae dolor. Lorem ipsum, dolor sit amet consectetur adipisicing
+            elit. Fugiat nostrum, obcaecati quidem ullam provident dolorum ipsa
+            corporis, earum consectetur praesentium veniam dolores ratione,
+            sequi reprehenderit quos error molestiae aperiam accusantium?
+          </p>
+        </section>
+        <section className={styles.techStackSection}>
+          <h2>Tech Stack</h2>
+          <div className={styles.techStackGrid}>
+            <TechCard
+              title="PHP"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              logo={phpLogo}
+              color={TechCardColor.BLUE}
+            />
+            <TechCard
+              title="Drupal"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              logo={drupalLogo}
+              color={TechCardColor.CYAN}
+            />
+            <TechCard
+              title="React"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              logo={reactLogo}
+              color={TechCardColor.CYAN}
+            />
+            <TechCard
+              title=".NET"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              logo={dotnetLogo}
+              color={TechCardColor.GREEN}
+            />
+          </div>
+        </section>
       </div>
     </div>
   );
