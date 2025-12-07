@@ -1,6 +1,6 @@
 import styles from "./Home.module.scss";
 
-import bannerImage from "../../assets/portrait_color.png";
+import bannerImage from "../../assets/potrait_stylised.png";
 import reactLogo from "../../assets/TechStack/react.svg";
 import jqueryLogo from "../../assets/TechStack/jquery.svg";
 import dotnetLogo from "../../assets/TechStack/dotnet.svg";
