@@ -12,6 +12,7 @@ import sqlserverLogo from "../../assets/TechStack/sqlserver.svg";
 import TechCard from "../../components/TechCard/TechCard";
 import { useParallax } from "../../hooks/useParallax";
 import { TechCardColor } from "../../components/TechCard/types";
+import { projects } from "../../data/projects";
 
 const Home = () => {
   const bannerBackgroundRef = useParallax(0.2);
@@ -44,8 +45,9 @@ const Home = () => {
           <img src={dotnetLogo} alt="Dotnet Logo" />
         </div>
       </div>
-      <div className={`content ${styles.content}`}>
-        <section>
+
+      <section>
+        <div className={`content ${styles.content}`}>
           <h2>Something About Me</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat odio
@@ -56,8 +58,10 @@ const Home = () => {
             corporis, earum consectetur praesentium veniam dolores ratione,
             sequi reprehenderit quos error molestiae aperiam accusantium?
           </p>
-        </section>
-        <section className={styles.techStackSection}>
+        </div>
+      </section>
+      <section className={styles.techStackSection}>
+        <div className={`content ${styles.content}`}>
           <h2>Tech Stack</h2>
           <div className={styles.techStackGrid}>
             <TechCard
@@ -101,8 +105,31 @@ const Home = () => {
               logo={sqlserverLogo}
             />
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+      <section className={styles.highlightedProjectsSection}>
+        <div className={`content ${styles.content}`}>
+          <h2>Featured Projects</h2>
+          <div className={styles.highlightedProjectsGrid}>
+            {projects
+              .filter((project) => project.featured === true)
+              .map((project) => (
+                <a href="">
+                  <div key={project.title} className={styles.projectCard}>
+                    <img src={project.thumbnail} alt={project.title} />
+                    <div className={styles.projectInfo}>
+                      <h3>{project.title}</h3>
+                      <p>{project.description}</p>
+                    </div>
+                  </div>
+                </a>
+              ))}
+          </div>
+          <a className={`buttonLink ${styles.buttonLink}`} href="/projects">
+            All Projects
+          </a>
+        </div>
+      </section>
     </div>
   );
 };
