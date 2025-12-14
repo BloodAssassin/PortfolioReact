@@ -38,12 +38,15 @@ section {
   color: $primary-color;
 }
 
+button,
 .buttonLink {
   display: inline-block;
   padding: 10px;
   background-color: $primary-color;
   color: $background-color;
   border-radius: $input-radius;
+  cursor: pointer;
+  border: none;
   transition: background-color 0.3s ease;
 
   &:hover {

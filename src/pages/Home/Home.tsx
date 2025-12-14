@@ -13,10 +13,18 @@ import TechCard from "../../components/TechCard/TechCard";
 import { useParallax } from "../../hooks/useParallax";
 import { TechCardColor } from "../../components/TechCard/types";
 import { projects } from "../../data/projects";
+import { experiences } from "../../data/experiences";
+import { useState } from "react";
 
 const Home = () => {
+  const [showAllExperiences, setShowAllExperiences] = useState(false);
   const bannerBackgroundRef = useParallax(0.2);
   const bannerLogosRef = useParallax(0.16);
+
+  const displayedExperiences = showAllExperiences
+    ? experiences
+    : experiences.slice(0, 3);
+  const hasMoreExperiences = experiences.length > 3;
 
   return (
     <div className={styles.home}>
@@ -48,7 +56,7 @@ const Home = () => {
 
       <section>
         <div className={`content ${styles.content}`}>
-          <h2>Something About Me</h2>
+          <h2>About Me</h2>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat odio
             architecto eum similique temporibus aut id nulla! Architecto dolores
@@ -60,6 +68,7 @@ const Home = () => {
           </p>
         </div>
       </section>
+
       <section className={styles.techStackSection}>
         <div className={`content ${styles.content}`}>
           <h2>Tech Stack</h2>
@@ -107,6 +116,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+
       <section className={styles.highlightedProjectsSection}>
         <div className={`content ${styles.content}`}>
           <h2>Featured Projects</h2>
@@ -128,6 +138,49 @@ const Home = () => {
           <a className={`buttonLink ${styles.buttonLink}`} href="/projects">
             All Projects
           </a>
+        </div>
+      </section>
+
+      <section className={styles.experienceSection}>
+        <div className={`content ${styles.content}`}>
+          <h2>Experience</h2>
+          <div className={styles.experienceList}>
+            {displayedExperiences.map((exp) => (
+              <div key={exp.company} className={styles.experienceCard}>
+                <h3>{exp.company}</h3>
+                <h4>{exp.position}</h4>
+                <p>{exp.description}</p>
+                <p>
+                  <strong>Duration:</strong>{" "}
+                  {exp.duration.start.toLocaleDateString("en-US", {
+                    month: "long",
+                    year: "numeric",
+                  })}{" "}
+                  -{" "}
+                  {exp.duration.end
+                    ? exp.duration.end.toLocaleDateString("en-US", {
+                        month: "long",
+                        year: "numeric",
+                      })
+                    : "Present"}
+                </p>
+                {exp.relatedProjects && exp.relatedProjects.length > 0 && (
+                  <p>
+                    <strong>Related projects:</strong>{" "}
+                    {exp.relatedProjects.join(", ")}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+          {hasMoreExperiences && (
+            <button
+              className={`buttonLink ${styles.buttonLink}`}
+              onClick={() => setShowAllExperiences(!showAllExperiences)}
+            >
+              {showAllExperiences ? "Show Less" : "Show More"}
+            </button>
+          )}
         </div>
       </section>
     </div>
