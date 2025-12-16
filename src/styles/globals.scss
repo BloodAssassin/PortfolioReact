@@ -6,12 +6,22 @@ body {
   margin: 0;
   background-color: $background-color;
   color: $text-color;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 
 section {
   margin: 40px 0;
   padding: 10px 0;
+}
+
+footer {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+main {
+  min-height: 90vh;
 }
 
 .content {
