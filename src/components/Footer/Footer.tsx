@@ -4,8 +4,11 @@ import { socials } from "../../data/socials";
 const Footer = () => {
   return (
     <footer className={styles.footer}>
+      <div className={styles.footerInside}></div>
       <div className={`content ${styles.content}`}>
-        <h3 className={styles.branding}>Got a Project in Mind? Let's Talk :)</h3>
+        <h3 className={styles.branding}>
+          Got a Project in Mind? Let's Talk :)
+        </h3>
 
         <form
           className={styles.contactForm}

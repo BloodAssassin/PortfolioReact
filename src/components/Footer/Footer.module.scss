@@ -3,9 +3,19 @@
 
 footer {
   position: relative;
-  background-color: $text-color;
   color: $background-color;
   margin-top: 150px;
+  padding-top: 10px;
+  overflow: hidden;
+
+  .footerInside {
+    background-color: $text-color;
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    bottom: 0;
+    z-index: -1;
+  }
 
   .content {
     display: flex;
@@ -16,10 +26,10 @@ footer {
   &::before {
     content: "";
     position: absolute;
-    top: -20px;
+    top: 10px;
     left: -5px;
     right: -5px;
-    bottom: 50%;
+    bottom: 40%;
     background-color: $text-color;
     transform: rotate(1deg);
     z-index: -1;
