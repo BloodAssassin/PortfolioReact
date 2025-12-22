@@ -1,39 +1,9 @@
 import styles from "./Footer.module.scss";
-
-import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
-
+import { useInViewAnimation } from "../../hooks/useInViewAnimation";
 import { socials } from "../../data/socials";
 
 const Footer = () => {
-  const footerRef = useRef<HTMLDivElement | null>(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    // Remove visible class when path changes
-    if (footerRef.current) {
-      footerRef.current.classList.remove(styles.visible);
-      console.log("Path changed, removed visible class from footer.");
-    }
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && footerRef.current) {
-          footerRef.current.classList.add(styles.visible);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: 0.2,
-      }
-    );
-
-    if (footerRef.current) {
-      observer.observe(footerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [location.pathname]);
+  const footerRef = useInViewAnimation(styles.visible, 0.3);
 
   return (
     <footer ref={footerRef}>

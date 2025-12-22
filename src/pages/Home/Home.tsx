@@ -10,6 +10,7 @@ import drupalLogo from "../../assets/TechStack/drupal.svg";
 
 import TechCard from "../../components/TechCard/TechCard";
 import { useParallax } from "../../hooks/useParallax";
+import { useInViewAnimation } from "../../hooks/useInViewAnimation";
 
 import { projects } from "../../data/projects";
 import { experiences } from "../../data/experiences";
@@ -19,6 +20,7 @@ const Home = () => {
   const [showAllExperiences, setShowAllExperiences] = useState(false);
   const bannerBackgroundRef = useParallax(0.2);
   const bannerLogosRef = useParallax(0.16);
+  const featuredProjectsRef = useInViewAnimation(styles.visible, 0.4);
 
   const experienceInitialCount = 1;
   const hasMoreExperiences = experiences.length > experienceInitialCount;
@@ -96,10 +98,13 @@ const Home = () => {
         </div>
       </section>
 
-      <section className={styles.highlightedProjectsSection}>
+      <section
+        className={styles.featuredProjectsSection}
+        ref={featuredProjectsRef}
+      >
         <div className={`content ${styles.content}`}>
           <h2>Featured Projects</h2>
-          <div className={styles.highlightedProjectsGrid}>
+          <div className={styles.featuredProjectsGrid}>
             {projects
               .filter((project) => project.featured === true)
               .map((project) => (

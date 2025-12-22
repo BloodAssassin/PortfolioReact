@@ -143,16 +143,42 @@
   }
 }
 
-.highlightedProjectsSection {
+.featuredProjectsSection {
   background-color: $text-color;
   color: $background-color;
 
   h2 {
+    position: relative;
     display: inline-block;
     padding: 5px;
     color: $text-color;
-    background-color: $primary-color;
+    background-color: transparent; // Remove static background
     border-radius: $input-radius;
+    overflow: hidden;
+    z-index: 1;
+
+    // Before background
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0;
+      background-color: $primary-color;
+      border-radius: $input-radius;
+      z-index: -1;
+      transition: none;
+      width: 0;
+    }
+  }
+
+  // Animated marker effect
+  &.visible {
+    h2::before {
+      width: 100%;
+      transition: width 0.5s ease-out;
+    }
   }
 
   .buttonLink {
@@ -164,7 +190,7 @@
     }
   }
 
-  .highlightedProjectsGrid {
+  .featuredProjectsGrid {
     margin-top: 15px;
     margin-bottom: 15px;
     display: grid;
