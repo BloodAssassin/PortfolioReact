@@ -1,5 +1,5 @@
 import styles from "./Home.module.scss";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
 
 import bannerImage from "../../assets/portrait_color.png";
@@ -17,13 +17,28 @@ import { experiences } from "../../data/experiences";
 import { technologies } from "../../data/technologies";
 
 const Home = () => {
-  const [showAllExperiences, setShowAllExperiences] = useState(false);
+  // Banner //
   const bannerBackgroundRef = useParallax(0.2);
   const bannerLogosRef = useParallax(0.16);
+
+  // Featured projects //
   const featuredProjectsRef = useInViewAnimation(styles.visible, 0.4);
 
+  // Experiences //
+  const [showAllExperiences, setShowAllExperiences] = useState(false);
   const experienceInitialCount = 1;
   const hasMoreExperiences = experiences.length > experienceInitialCount;
+  const revealedExperiencesRef = useRef<HTMLDivElement | null>(null);
+  const [experienceHeight, setHeight] = useState(0);
+
+  // Calculate revealed experiences list height
+  useEffect(() => {
+    if (!revealedExperiencesRef.current) return;
+
+    requestAnimationFrame(() => {
+      setHeight(showAllExperiences ? revealedExperiencesRef.current!.scrollHeight : 0);
+    });
+  }, [showAllExperiences]);
 
   const calculateMonthsDuration = (start: Date, end: Date | null) => {
     const endDate = end || new Date(); // Use current date if end is null
@@ -166,10 +181,11 @@ const Home = () => {
             ))}
             {/* Revealed list */}
             <motion.div
+              ref={revealedExperiencesRef}
               className={styles.revealedExperienceList}
               initial={{ height: 0, opacity: 0 }}
               animate={{
-                height: showAllExperiences ? "auto" : 0,
+                height: showAllExperiences ? experienceHeight : 0,
                 opacity: showAllExperiences ? 1 : 0,
               }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
