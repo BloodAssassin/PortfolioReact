@@ -70,6 +70,28 @@
       gap: 15px;
     }
   }
+
+  .logo {
+    display: flex;
+    line-height: 1.6;
+    width: 50px;
+
+    &:hover {
+      background-color: inherit;
+    }
+
+    img {
+      width: 100%;
+      border-radius: $input-radius;
+      transition: filter 0.3s ease;
+      filter: brightness(0) saturate(100%) invert(11%) sepia(30%) saturate(533%)
+        hue-rotate(139deg) brightness(98%) contrast(93%);
+
+      &:hover {
+        filter: brightness(1) saturate(100%) invert(1);
+      }
+    }
+  }
 }
 
 @keyframes wobble {

@@ -4,6 +4,8 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { ROUTES } from "../../config/routes";
 
+import logo from "/logo.svg";
+
 function Header() {
   const location = useLocation();
 
@@ -35,7 +37,9 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.headerContent}>
-        <div className={styles.logo}>Logo</div>
+        <Link to={ROUTES.HOME} className={`${styles.navLink} ${styles.logo}`}>
+          <img src={logo} alt="logo" />
+        </Link>
         <nav className={styles.nav}>
           <Link to={ROUTES.HOME} className={styles.navLink}>
             Home
