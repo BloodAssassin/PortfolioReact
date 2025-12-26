@@ -139,7 +139,9 @@ const Home = () => {
               .filter((project) => project.featured === true)
               .map((project) => (
                 <a
-                  href={`${ROUTES.PROJECTS}/${slugify(project.title, { lower: true })}`}
+                  href={`${ROUTES.PROJECTS}/${slugify(project.title, {
+                    lower: true,
+                  })}`}
                 >
                   <div key={project.title} className={styles.projectCard}>
                     <img src={project.thumbnail} alt={project.title} />
@@ -151,7 +153,10 @@ const Home = () => {
                 </a>
               ))}
           </div>
-          <a className={`buttonLink ${styles.buttonLink}`} href={ROUTES.PROJECTS}>
+          <a
+            className={`buttonLink ${styles.buttonLink}`}
+            href={ROUTES.PROJECTS}
+          >
             All Projects
           </a>
         </div>
@@ -303,9 +308,6 @@ const Home = () => {
             <button
               className={`buttonLink ${styles.buttonLink}`}
               onClick={() => setShowAllExperiences(!showAllExperiences)}
-              style={{
-                marginTop: showAllExperiences ? "20px" : undefined,
-              }}
             >
               {showAllExperiences ? "Show Less" : "Show More"}
             </button>

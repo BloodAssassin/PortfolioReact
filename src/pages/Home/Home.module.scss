@@ -283,6 +283,8 @@
 }
 
 .experienceSection {
+  position: relative;
+
   h2 {
     display: inline-block;
     padding: 5px;
@@ -292,7 +294,9 @@
   }
 
   .buttonLink {
+    position: absolute;
     background-color: $text-color;
+    z-index: 2;
     transition: background-color 0.3s ease, transform 0.3s ease,
       margin 0.2s ease-in 0.25s;
 
