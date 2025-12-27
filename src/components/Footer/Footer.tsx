@@ -13,7 +13,7 @@ const Footer = () => {
         <div className={styles.footerBackground}></div>
         <div className={`content ${styles.content}`}>
           <h3 className={styles.branding}>
-            Got a Project in Mind? Let's Talk :)
+            Got a Project in Mind? <strong className="highlight">Let's Talk :)</strong>
           </h3>
 
           <form

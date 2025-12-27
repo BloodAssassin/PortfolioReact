@@ -9,7 +9,7 @@ interface TechCardProps {
   color?: TechCardColor;
 }
 
-function TechCard({ title, description, logo, color }: TechCardProps) {
+const TechCard = ({ title, description, logo, color }: TechCardProps) => {
   return (
     <div className={styles.techCard}>
       <div className={styles.cardContent}>
@@ -24,6 +24,6 @@ function TechCard({ title, description, logo, color }: TechCardProps) {
       </div>
     </div>
   );
-}
+};
 
 export default TechCard;

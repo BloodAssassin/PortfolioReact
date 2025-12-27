@@ -6,7 +6,7 @@ import { ROUTES } from "../../config/routes";
 
 import logo from "/logo.svg";
 
-function Header() {
+const Header = () => {
   const location = useLocation();
 
   useEffect(() => {
@@ -57,6 +57,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

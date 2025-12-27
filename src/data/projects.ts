@@ -9,6 +9,7 @@ export interface Project {
   thumbnail: string;
   screenshots: string[];
   technologies: string[];
+  industries: string[];
   projectUrl: string;
   githubUrl: string | null;
   featured: boolean | false;
@@ -22,7 +23,8 @@ export const projects: Project[] = [
     snippet: "E-commerce platform for kitchen appliances.",
     thumbnail: easyKitchenThumb,
     screenshots: [],
-    technologies: ["React", "PHP", "MySQL", "Stripe API"],
+    technologies: ["Drupal", "PHP", "jQuery", "MySQL"],
+    industries: ["E-Commerce"],
     projectUrl: "https://easykitchenlab.com",
     githubUrl: null,
     featured: true,
@@ -34,7 +36,8 @@ export const projects: Project[] = [
     snippet: "Official website for Fermicoding.",
     thumbnail: fermicodingThumb,
     screenshots: [],
-    technologies: ["React", "PHP", "MySQL", "Stripe API"],
+    technologies: ["Drupal", "PHP", "jQuery", "MySQL"],
+    industries: ["Advertising"],
     projectUrl: "https://easykitchenlab.com",
     githubUrl: null,
     featured: true,
@@ -46,7 +49,8 @@ export const projects: Project[] = [
     snippet: "Content management system for gaming website.",
     thumbnail: taglientThumb,
     screenshots: [],
-    technologies: [".NET Core", "React", "SQL Server"],
+    technologies: ["React"],
+    industries: ["Entertainment"],
     projectUrl: "https://taglientgames.com",
     githubUrl: "https://github.com/milosristic65/TaglientGames",
     featured: true,

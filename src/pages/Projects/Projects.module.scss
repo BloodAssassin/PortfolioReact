@@ -1,0 +1,92 @@
+@use "../../styles/variables" as *;
+@use "sass:color";
+
+.projects .banner {
+  background-color: $text-color;
+  color: $background-color;
+  position: relative;
+  height: 80vh;
+
+  .bannerText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+
+    * {
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 4rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.projectsGrid {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+
+  // Project Cards
+  & > * {
+    box-shadow: 0 2px 8px rgba(9, 2, 54, 0.2);
+    animation: fadeInUp 0.5s ease;
+  }
+
+  @media (max-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $mobile) {
+    grid-template-columns: 1fr;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.filters {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid $text-color;
+
+  span {
+    font-size: 1.5rem;
+  }
+
+  .dropdowns {
+    display: flex;
+    gap: 10px;
+
+    & > * {
+      display: inline-block;
+      max-width: 400px;
+      width: 400px;
+    }
+  }
+
+  .buttonLink {
+    background-color: $text-color;
+
+    &:hover {
+      background-color: color.adjust($color: $text-color, $lightness: 15%);
+    }
+  }
+}

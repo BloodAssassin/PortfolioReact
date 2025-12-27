@@ -3,11 +3,11 @@ import styles from "./Contact.module.scss";
 const Contact = () => {
   return (
     <div className={styles.contact}>
-      <div className={`content ${styles.content}`}>
-        <section>
+      <div className={`banner ${styles.banner}`}>
+        <div className={`bannerText ${styles.bannerText}`}>
           <h1>Contact</h1>
-          <p>Contact me.</p>
-        </section>
+          <p>Let's talk, send an email :)</p>
+        </div>
       </div>
     </div>
   );

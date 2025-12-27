@@ -2,6 +2,7 @@ import styles from "./Home.module.scss";
 import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
 import { addDays, intervalToDuration } from "date-fns";
+import { Link } from "react-router-dom";
 import slugify from "slugify";
 
 import { ROUTES } from "../../config/routes";
@@ -13,6 +14,7 @@ import phpLogo from "../../assets/TechStack/php.svg";
 import drupalLogo from "../../assets/TechStack/drupal.svg";
 
 import TechCard from "../../components/TechCard/TechCard";
+import ProjectCard from "../../components/ProjectCard/ProjectCard";
 import { useParallax } from "../../hooks/useParallax";
 import { useInViewAnimation } from "../../hooks/useInViewAnimation";
 
@@ -138,27 +140,19 @@ const Home = () => {
             {projects
               .filter((project) => project.featured === true)
               .map((project) => (
-                <a
-                  href={`${ROUTES.PROJECTS}/${slugify(project.title, {
-                    lower: true,
-                  })}`}
-                >
-                  <div key={project.title} className={styles.projectCard}>
-                    <img src={project.thumbnail} alt={project.title} />
-                    <div className={styles.projectInfo}>
-                      <h3>{project.title}</h3>
-                      <p>{project.snippet}</p>
-                    </div>
-                  </div>
-                </a>
+                <ProjectCard
+                  title={project.title}
+                  snippet={project.snippet}
+                  thumbnail={project.thumbnail}
+                />
               ))}
           </div>
-          <a
+          <Link
+            to={ROUTES.PROJECTS}
             className={`buttonLink ${styles.buttonLink}`}
-            href={ROUTES.PROJECTS}
           >
             All Projects
-          </a>
+          </Link>
         </div>
       </section>
 

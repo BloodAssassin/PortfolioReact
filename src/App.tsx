@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import Home from "./pages/Home/Home";
+import Projects from "./pages/Projects/Projects";
 import Contact from "./pages/Contact/Contact";
+
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
@@ -20,6 +23,7 @@ function App() {
         <main>
           <Routes>
             <Route path={ROUTES.HOME} element={<Home />} />
+            <Route path={ROUTES.PROJECTS} element={<Projects />} />
             <Route path={ROUTES.CONTACT} element={<Contact />} />
           </Routes>
         </main>
